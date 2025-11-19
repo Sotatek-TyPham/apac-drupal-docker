@@ -1,0 +1,28 @@
+services:
+
+  drupal:
+    image: drupal:10-apache
+    ports:
+      - 8025:80
+    volumes:
+      - /var/www/html/modules
+      - /var/www/html/profiles
+      - ./themes:/var/www/html/themes
+      - /var/www/html/sites
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: drupal
+    volumes:
+      - ${PWD}/pgdata:/var/lib/postgresql/data
+    ports:
+      - '25432:5432'
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  themes:
