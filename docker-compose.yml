@@ -5,10 +5,10 @@ services:
     ports:
       - 8025:80
     volumes:
-      - /var/www/html/modules
-      - /var/www/html/profiles
+      - ./modules:/var/www/html/modules
+      - ./profiles:/var/www/html/profiles
       - ./themes:/var/www/html/themes
-      - /var/www/html/sites
+      - ./sites:/var/www/html/sites
     restart: unless-stopped
 
   postgres:
