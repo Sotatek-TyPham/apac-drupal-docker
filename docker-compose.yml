@@ -6,7 +6,7 @@ services:
       - 8025:80
     volumes:
       - ./modules:/var/www/html/modules
-      - ./profiles:/var/www/html/profiles
+      - /var/www/html/profiles
       - ./themes:/var/www/html/themes
       - /var/www/html/sites
     restart: unless-stopped
